@@ -1,8 +1,8 @@
-# **ScanCode**
+# **WebViewUtils**
 
-## 扫描二维码条形码控件
+## 一键打开WebView
 
-[![](https://jitpack.io/v/MZCretin/ScanCode.svg)](https://jitpack.io/#MZCretin/ScanCode)
+[![](https://jitpack.io/v/MZCretin/WebViewUtils.svg)](https://jitpack.io/#MZCretin/WebViewUtils)
 
 ### 系列
 
@@ -11,13 +11,13 @@
 + [App内部自动更新-AutoUpdateProject](https://github.com/MZCretin/AutoUpdateProject)
 + [选择城市-CitySelect](https://github.com/MZCretin/CitySelect)
 + [扫描二维码条形码控件-ScanCode](https://github.com/MZCretin/CitySeScanCode)
++ [一键打开WebView件-WebViewUtils](https://github.com/MZCretin/WebViewUtils)
 
 ### 优势
 
-+ **使用zBar进行二维码/条形码识别**
-+ **可打开/关闭闪光灯**
-+ **可打开相册扫描**
-+ **使用简单，几行代码，即可拥有整个扫描识别功能**
++ **使用AgentWeb实现WebView封装**
++ **提供通用配置，一键打开WebView**
++ **UI可配置，Cookit可配置**
 
 ### demo下载
 
@@ -48,40 +48,24 @@
 
   ```java
   dependencies {
-  		implementation 'com.github.MZCretin:ScanCode:latest_version'
+  		implementation 'com.github.MZCretin:WebViewUtils:latest_version'
   }
   ```
 
 + Step3 Open scan activity wherever you want.
   ```java
-  ScanConfig config = new ScanConfig()
-                  .setShowFlashlight(true)//是否需要打开闪光灯
-                  .setShowGalary(true)//是否需要打开相册
-                  .setNeedRing(true);//是否需要提示音
-  //ScanConfig 也可以不配置 默认都是打开
-  CaptureActivity.launch(this, config);
-  ```
-
-+ Step4 Receive the result on the 'onActivityResult' in activity or fragment.
-  ```java
-  if (requestCode == CaptureActivity.REQUEST_CODE_SCAN) {
-      // 扫描二维码回传
-      if (resultCode == RESULT_OK) {
-          if (data != null) {
-              //获取扫描结果
-              Bundle bundle = data.getExtras();
-              String result = bundle.getString(CaptureActivity.EXTRA_SCAN_RESULT);
-              tv_scanResult.setText("扫描结果：" + result);
-          }
-      }
-  }
-  ```
-
-+ Step5 Add follow codes in app build.gradle inner android label. Otherwise you can not load .so files.
-  ```java
-  sourceSets {
-      main {
-          jniLibs.srcDirs = ['libs']
-      }
-  }
+  String url = "http://www.mxnzp.com"
+  WebUtilsConfig config =
+          new WebUtilsConfig()
+                  .setTitleBackgroundColor(R.color.colorAccent)//设置标题栏背景色
+                  .setBackText("关闭")//设置返回按钮的文案
+                  .setBackBtnRes(R.mipmap.arrow_left_white)//设置返回按钮的图标
+                  .setMoreBtnRes(R.mipmap.more_web)//设置更多按钮的图标
+                  .setShowBackText(true)//设置是否显示返回按钮的文案
+                  .setShowMoreBtn(true)//设置是否显示更多按钮
+                  .setShowTitleLine(false)//设置是否显示标题下面的分割线
+                  .setShowTitleView(true)//设置是否显示标题栏，网页是全屏的时候可以选择隐藏标题栏
+                  .setTitleBackgroundRes(-1)//设置标题栏背景资源
+                  .setTitleLineColor(R.color.app_title_color);//设置标题栏下面的分割线的颜色
+  OpenWebActivity.openWebView(MainActivity.this, url, config);
   ```
