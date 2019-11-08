@@ -17,7 +17,7 @@
 
 + **使用AgentWeb实现WebView封装**
 + **提供通用配置，一键打开WebView**
-+ **UI可配置，Cookit可配置**
++ **UI可配置，cookie可配置**
 
 ### demo下载
 
@@ -52,7 +52,7 @@
   }
   ```
 
-+ Step3 Open scan activity wherever you want.
++ Step3 Open webview activity wherever you want.
   ```java
   String url = "http://www.mxnzp.com"
   WebUtilsConfig config =
