@@ -1,0 +1,5 @@
+<resources>
+    <string name="str_web_back">返回</string>
+    <string name="str_web_copy">链接已复制</string>
+    <string name="str_web_url_null">链接不能为空</string>
+</resources>

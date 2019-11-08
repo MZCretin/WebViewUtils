@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingRight="10dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_gravity="right"
+        android:background="@drawable/rectangle_top"
+        android:layout_marginRight="8dp"  />
+
+    <LinearLayout
+        android:background="@drawable/shape_bg_top_popwindow"
+        android:layout_width="110dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:drawablePadding="13.5dp"
+            android:gravity="center"
+            android:paddingTop="17dp"
+            android:paddingBottom="10dp"
+            android:text="复制链接"
+            android:textColor="#333333"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:drawablePadding="13.5dp"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="刷新页面"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_03"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:drawablePadding="13.5dp"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="17dp"
+            android:text="取         消"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+</LinearLayout>
