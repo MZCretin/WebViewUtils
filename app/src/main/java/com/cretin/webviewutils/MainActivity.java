@@ -1,9 +1,9 @@
 package com.cretin.webviewutils;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.text.util.LinkifyCompat;
 
 import android.os.Bundle;
+import android.support.v4.text.util.LinkifyCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;

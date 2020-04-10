@@ -48,7 +48,10 @@
 
   ```java
   dependencies {
-  		implementation 'com.github.MZCretin:WebViewUtils:latest_version'
+  		//androidx 版本
+        		implementation 'com.github.MZCretin:WebViewUtils:v1.0.2-x'
+            //非androidx 版本
+              implementation 'com.github.MZCretin:WebViewUtils:v1.0.2'
   }
   ```
 
