@@ -21,7 +21,7 @@
         android:id="@+id/ed_url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="#ffffff"
         android:padding="10dp"
         android:text="https://m.jd.com/"
         android:textColor="#333333"
@@ -49,7 +49,7 @@
         android:lineSpacingExtra="5dp"
         android:scrollbars="vertical"
         android:singleLine="false"
-        android:text="项目地址：\nhttps://github.com/MZCretin/AutoUpdateProject\n记得点赞哦！！！"
+        android:text="项目地址：\nhttps://github.com/MZCretin/WebViewUtils\n记得点赞哦！！！"
         android:textColor="#4a4a4a"
         android:textSize="15sp" />
 
