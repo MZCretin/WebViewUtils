@@ -128,8 +128,8 @@ public class OpenWebActivity extends AppCompatActivity {
                 AgentWebConfig.syncCookie(singleCookie.split(TAG_SPLIT)[0], singleCookie.split(TAG_SPLIT)[1]);
             }
         }
-
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             isKitkat = true;
