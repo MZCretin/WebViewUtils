@@ -2,8 +2,8 @@ package com.cretin.tools.openwebview;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.ColorRes;
 
-import androidx.annotation.ColorRes;
 
 /**
  * @date: on 2019-11-07
