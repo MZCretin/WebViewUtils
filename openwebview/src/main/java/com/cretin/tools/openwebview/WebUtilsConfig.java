@@ -3,6 +3,8 @@ package com.cretin.tools.openwebview;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.ColorRes;
+
 /**
  * @date: on 2019-11-07
  * @author: a112233
@@ -29,6 +31,39 @@ public class WebUtilsConfig implements Parcelable {
     private int titleLineColor = -1;
     //是否显示标题 如果你的页面是全屏的可以去掉标题栏
     private boolean showTitleView = true;
+    //标题颜色
+    private int titleTextColor = -1;
+    //返回按钮文字颜色
+    private int backTextColor = -1;
+    //状态栏文字颜色是否是深色
+    private boolean isStateBarTextColorDark;
+
+    public boolean isStateBarTextColorDark() {
+        return isStateBarTextColorDark;
+    }
+
+    public WebUtilsConfig setStateBarTextColorDark(boolean stateBarTextColorDark) {
+        isStateBarTextColorDark = stateBarTextColorDark;
+        return this;
+    }
+
+    public int getTitleTextColor() {
+        return titleTextColor;
+    }
+
+    public WebUtilsConfig setTitleTextColor(@ColorRes int titleTextColor) {
+        this.titleTextColor = titleTextColor;
+        return this;
+    }
+
+    public int getBackTextColor() {
+        return backTextColor;
+    }
+
+    public WebUtilsConfig setBackTextColor(@ColorRes int backTextColor) {
+        this.backTextColor = backTextColor;
+        return this;
+    }
 
     public String getBackText() {
         return backText;
@@ -61,7 +96,7 @@ public class WebUtilsConfig implements Parcelable {
         return titleBackgroundColor;
     }
 
-    public WebUtilsConfig setTitleBackgroundColor(int titleBackgroundColor) {
+    public WebUtilsConfig setTitleBackgroundColor(@ColorRes int titleBackgroundColor) {
         this.titleBackgroundColor = titleBackgroundColor;
         return this;
     }
@@ -120,6 +155,7 @@ public class WebUtilsConfig implements Parcelable {
         return this;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -137,6 +173,9 @@ public class WebUtilsConfig implements Parcelable {
         dest.writeByte(this.showTitleLine ? (byte) 1 : (byte) 0);
         dest.writeInt(this.titleLineColor);
         dest.writeByte(this.showTitleView ? (byte) 1 : (byte) 0);
+        dest.writeInt(this.titleTextColor);
+        dest.writeInt(this.backTextColor);
+        dest.writeByte(this.isStateBarTextColorDark ? (byte) 1 : (byte) 0);
     }
 
     public WebUtilsConfig() {
@@ -153,6 +192,9 @@ public class WebUtilsConfig implements Parcelable {
         this.showTitleLine = in.readByte() != 0;
         this.titleLineColor = in.readInt();
         this.showTitleView = in.readByte() != 0;
+        this.titleTextColor = in.readInt();
+        this.backTextColor = in.readInt();
+        this.isStateBarTextColorDark = in.readByte() != 0;
     }
 
     public static final Creator<WebUtilsConfig> CREATOR = new Creator<WebUtilsConfig>() {
