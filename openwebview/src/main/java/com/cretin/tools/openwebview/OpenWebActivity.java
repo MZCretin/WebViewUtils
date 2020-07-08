@@ -4,12 +4,14 @@ package com.cretin.tools.openwebview;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.ImageView;
@@ -24,6 +26,8 @@ import com.just.agentweb.AgentWeb;
 import com.just.agentweb.AgentWebConfig;
 import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
+
+import org.w3c.dom.Text;
 
 import java.util.Map;
 
@@ -128,12 +132,14 @@ public class OpenWebActivity extends AppCompatActivity {
                 AgentWebConfig.syncCookie(singleCookie.split(TAG_SPLIT)[0], singleCookie.split(TAG_SPLIT)[1]);
             }
         }
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
-        getSupportActionBar().hide();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             isKitkat = true;
         }
+
         setContentView(R.layout.activity_open_web);
 
         findView();
@@ -146,25 +152,6 @@ public class OpenWebActivity extends AppCompatActivity {
 
         doConfig();
 
-        //        AgentWeb.with(this)
-//                .setAgentWebParent((LinearLayout) view, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
-//                .useDefaultIndicator(-1, 3)
-//                .setAgentWebWebSettings(getSettings())
-//                .setWebViewClient(mWebViewClient)
-//                .setWebChromeClient(mWebChromeClient)
-//                .setPermissionInterceptor(mPermissionInterceptor)
-//                .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)
-//                .setAgentWebUIController(new UIController(getActivity()))
-//                .setMainFrameErrorView(R.layout.agentweb_error_page, -1)
-//                .useMiddlewareWebChrome(getMiddlewareWebChrome())
-//                .useMiddlewareWebClient(getMiddlewareWebClient())
-//                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)
-//                .interceptUnkownUrl()
-//                .createAgentWeb()
-//                .ready()
-//                .go(getUrl());
-
-
         mAgentWeb = AgentWeb.with(this)
                 .setAgentWebParent((LinearLayout) findViewById(R.id.ll_web_root), new LinearLayout.LayoutParams(-1, -1))
                 .useDefaultIndicator()
@@ -173,7 +160,6 @@ public class OpenWebActivity extends AppCompatActivity {
                 .createAgentWeb()
                 .ready()
                 .go(currentUrl);
-
 
     }
 
@@ -297,6 +283,24 @@ public class OpenWebActivity extends AppCompatActivity {
             llWebTitle.setVisibility(View.VISIBLE);
         } else {
             llWebTitle.setVisibility(View.GONE);
+        }
+        if (webConfig.getTitleTextColor() != -1) {
+            mTitleTextView.setTextColor(getResources().getColor(webConfig.getTitleTextColor()));
+        }
+        if (webConfig.getBackTextColor() != -1) {
+            mTitleBack.setTextColor(getResources().getColor(webConfig.getBackTextColor()));
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //获取窗口区域
+            Window window = getWindow();
+            window.setStatusBarColor(Color.TRANSPARENT);
+            if (webConfig.isStateBarTextColorDark()) {
+                //设置显示为白色背景，黑色字体
+                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            } else {
+                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+            }
         }
     }
 }

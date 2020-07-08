@@ -27,7 +27,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //使用本地依赖
-//    implementation project(path: ':openwebview')
+    implementation project(path: ':openwebview')
 
-    implementation 'com.github.MZCretin:WebViewUtils:v1.0.2'
+//    implementation 'com.github.MZCretin:WebViewUtils:v1.0.2'
 }

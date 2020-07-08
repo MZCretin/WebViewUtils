@@ -32,15 +32,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="打开WebView" />
+        android:text="打开默认配置WebView" />
 
     <Button
-        android:id="@+id/tv_open_config"
+        android:id="@+id/tv_open_config01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:text="通过配置打开WebView（标题栏有背景）" />
+
+    <Button
+        android:id="@+id/tv_open_config02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
-        android:text="通过配置打开WebView" />
+        android:layout_marginTop="5dp"
+        android:text="通过配置打开WebView（标题栏没有有背景）" />
 
     <TextView
         android:id="@+id/tv_info"
@@ -49,7 +56,7 @@
         android:lineSpacingExtra="5dp"
         android:scrollbars="vertical"
         android:singleLine="false"
-        android:text="项目地址：\nhttps://jitpack.io/#MZCretin/WebViewUtils\n记得点赞哦！！！"
+        android:text="项目地址：\nhttps://github.com/MZCretin/WebViewUtils\n记得点赞哦！！！"
         android:textColor="#4a4a4a"
         android:textSize="15sp" />
 
